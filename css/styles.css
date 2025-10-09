@@ -145,6 +145,8 @@ h1, h2, h3 {
     align-items: center;
     text-align: center;
     color: #fff;
+    padding-top: 80px; 
+    box-sizing: border-box;
 }
 
 .video-container {
