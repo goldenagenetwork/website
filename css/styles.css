@@ -157,15 +157,22 @@ h1, h2, h3 {
 }
 
 .background-video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(4px) brightness(0.6);
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .background-video {
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        filter: blur(4px) brightness(0.6);
+    }
 }
 
 .content-overlay {
@@ -482,7 +489,8 @@ section.visible {
     }
 
     .latest-pack-section .video-wrapper {
-        padding-bottom: 56.25%; 
+        width: 100%;
+        padding-bottom: 56.25%; /* i added 16:9 for vertical mobile! */
     }
 }
 
