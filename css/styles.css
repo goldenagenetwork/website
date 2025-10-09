@@ -72,11 +72,11 @@ h1, h2, h3 {
 .logo {
     height: 45px;
     margin-right: 12px;
-    transition: transform 0.4s ease;
+    transition: transform 0.3s ease;
 }
 
 .navbar-brand:hover .logo {
-    transform: rotate(360deg);
+    transform: scale(1.1);
 }
 
 .navbar-nav {
@@ -224,8 +224,8 @@ h1, h2, h3 {
 }
 
 .btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(252, 163, 17, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(252, 163, 17, 0.2);
 }
 
 .btn:hover::before {
@@ -277,6 +277,43 @@ section.visible {
 .feature-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+
+/* latest pack section */
+.latest-pack-section .pack-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.latest-pack-section .pack-info {
+    flex: 1;
+    text-align: left;
+}
+
+.latest-pack-section .pack-info p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.latest-pack-section .video-wrapper {
+    flex: 1.5;
+    position: relative;
+    padding-bottom: 31.25%; 
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.latest-pack-section .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* about section */
@@ -434,6 +471,18 @@ section.visible {
 
     .content-overlay p {
         font-size: 1.3rem;
+    }
+
+    .latest-pack-section .pack-content {
+        flex-direction: column;
+    }
+
+    .latest-pack-section .pack-info {
+        text-align: center;
+    }
+
+    .latest-pack-section .video-wrapper {
+        padding-bottom: 56.25%; 
     }
 }
 
