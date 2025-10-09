@@ -273,8 +273,8 @@ section.visible {
 }
 
 .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px var(--primary-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 .feature-card i {
@@ -365,8 +365,8 @@ section.visible {
 }
 
 .staff-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 20px var(--primary-gold);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 .staff-card img {
@@ -422,7 +422,7 @@ section.visible {
 
 .social-media a:hover {
     color: var(--primary-gold);
-    transform: translateY(-5px);
+    transform: translateY(-2px);
 }
 
 .footer p {
@@ -445,7 +445,21 @@ section.visible {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* mobile responsiveness */
+@media (max-width: 992px) {
+    .latest-pack-section .pack-content {
+        flex-direction: column;
+    }
+
+    .latest-pack-section .pack-info {
+        text-align: center;
+    }
+
+    .latest-pack-section .video-wrapper {
+        width: 100%;
+        padding-bottom: 56.25%;
+    }
+}
+
 @media(max-width: 768px) {
     .navbar-toggler {
         display: block;
@@ -480,19 +494,6 @@ section.visible {
 
     .content-overlay p {
         font-size: 1.3rem;
-    }
-
-    .latest-pack-section .pack-content {
-        flex-direction: column;
-    }
-
-    .latest-pack-section .pack-info {
-        text-align: center;
-    }
-
-    .latest-pack-section .video-wrapper {
-        width: 100%;
-        padding-bottom: 56.25%; /* i added 16:9 for vertical mobile! */
     }
 }
 
