@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://gasmp.net/sitemap.xml
-# If you want to block the redirect page from being indexed, uncomment the next line
+# hey staff! if you want to block the redirect page from being indexed, uncomment the next line
 # Disallow: /discord.html
+
