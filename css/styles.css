@@ -55,6 +55,36 @@ html {
     scroll-behavior: smooth;
 }
 
+/* accessibility: skip link and focus-visible styles */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 8px;
+    top: 8px;
+    width: auto;
+    height: auto;
+    padding: 8px 12px;
+    background: #111;
+    color: var(--primary-gold);
+    z-index: 2000;
+    border-radius: 4px;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid var(--primary-gold);
+    outline-offset: 2px;
+}
+
 body {
     font-family: 'Exo 2', sans-serif;
     line-height: 1.6;
@@ -521,6 +551,9 @@ section.visible {
 }
 
 @media(max-width: 768px) {
+    .navbar {
+        top: calc(var(--announcement-height) - 8px);
+    }
     .navbar-toggler {
         display: block;
     }
@@ -564,10 +597,27 @@ section.visible {
     .discord-embed iframe {
         height: 420px !important;
     }
+    .main-header {
+        height: calc(100vh - (var(--announcement-height) - 8px));
+        padding-top: calc(80px + (var(--announcement-height) - 8px));
+        box-sizing: border-box;
+    }
 }
 
 .main-logo {
     max-width: 80%;
     height: auto;
     margin-bottom: 1.5rem;
+}
+
+/* pages w/o without an announcement bar: remove top offset to avoid gaps */
+body.no-announcement .navbar {
+    top: 0;
+}
+body.no-announcement .main-header {
+    height: 100vh;
+    padding-top: 80px;
+}
+body.no-announcement .navbar-collapse.active {
+    padding-top: 0;
 }
