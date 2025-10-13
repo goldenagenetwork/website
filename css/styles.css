@@ -138,9 +138,15 @@ h1, h2, h3 {
     padding: 1rem 0;
     position: fixed;
     width: 100%;
-    top: var(--announcement-height);
+    top: 0;
     z-index: 1000;
     transition: background 0.3s ease-in-out;
+}
+
+/* When an announcement bar is present directly before the navbar, 
+offset the navbar */
+.announcement-bar + .navbar {
+    top: var(--announcement-height);
 }
 
 .navbar .container {
@@ -551,7 +557,8 @@ section.visible {
 }
 
 @media(max-width: 768px) {
-    .navbar {
+    /* only offset on mobile when an announcement bar exists */
+    .announcement-bar + .navbar {
         top: calc(var(--announcement-height) - 8px);
     }
     .navbar-toggler {
@@ -565,6 +572,9 @@ section.visible {
 
     .navbar-collapse.active {
         display: block;
+    }
+    /* extra padding only when announcement bar exists */
+    .announcement-bar + .navbar .navbar-collapse.active {
         padding-top: var(--announcement-height);
     }
 
