@@ -31,7 +31,8 @@ const navbarToggler = document.querySelector('.navbar-toggler');
 const navbarCollapse = document.querySelector('.navbar-collapse');
 
 navbarToggler.addEventListener('click', () => {
-    navbarCollapse.classList.toggle('active');
+    const isActive = navbarCollapse.classList.toggle('active');
+    navbarToggler.setAttribute('aria-expanded', isActive ? 'true' : 'false');
 });
 
 // auto close for mobile navbar | this is used when a nav link is clicked
@@ -39,6 +40,7 @@ document.querySelectorAll('.navbar-nav a').forEach(navLink => {
     navLink.addEventListener('click', () => {
         if (navbarCollapse.classList.contains('active')) {
             navbarCollapse.classList.remove('active');
+            navbarToggler.setAttribute('aria-expanded', 'false');
         }
     });
 });
