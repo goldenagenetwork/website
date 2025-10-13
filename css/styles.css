@@ -26,6 +26,7 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-sizing: border-box;
 }
 .announcement-bar a {
     color: #111;
@@ -36,17 +37,22 @@
     width: 100%;
     height: 100%;
     padding: 0;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
     .announcement-bar {
         height: calc(var(--announcement-height) - 8px);
-        font-size: 0.95rem;
+        font-size: clamp(0.65rem, 2.8vw, 1rem);
         padding: 0 8px;
         justify-content: center;
+        letter-spacing: 0.25px;
     }
     .announcement-bar a {
         padding: 0 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
