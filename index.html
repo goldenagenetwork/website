@@ -43,20 +43,19 @@
     <script src="https://website-widgets.pages.dev/dist/sienna.min.js" defer></script>
 </head>
 <body>
-    <!-- Developed with love by pvrz (chris) -->
-     
-    <!-- announcement bar (comment if not needed) -->
-    <div class="announcement-bar">
-        <a href="https://www.curseforge.com/minecraft/modpacks/goldenage-the-new-era/files/7103761" target="_blank" rel="noopener">THE NEW ERA | PACK VERSION AP_02 RELEASED!</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <div class="announcement-bar" role="banner" aria-hidden="false">
+        <a href="https://www.curseforge.com/minecraft/modpacks/goldenage-the-new-era/files/7103761" target="_blank" rel="noopener" aria-label="Download The New Age pack">THE NEW ERA | PACK VERSION AP_02 RELEASED!</a>
     </div>
 
     <!-- navbar -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <a href="#" class="navbar-brand">
                 <img src="media/goldenagelogosquare.png" alt="GoldenAge Logo" class="logo">
             </a>
-            <button class="navbar-toggler" aria-label="Toggle navigation">
+            <button class="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="navbar-collapse">
@@ -72,6 +71,7 @@
     </nav>
 
     <!-- main container -->
+    <main id="main-content">
     <header id="news" class="main-header">
         <div class="video-container">
             <video src="media/background.mp4" autoplay muted loop playsinline class="background-video"></video>
@@ -82,6 +82,7 @@
             <a href="https://discord.gg/BHHCbj3uwP" target="_blank" class="btn btn-primary"><i class="fab fa-discord"></i> Join our Discord</a>
         </div>
     </header>
+    </main>
 
     <!-- latest pack section -->
     <section id="latest-pack" class="container latest-pack-section">
@@ -172,6 +173,7 @@
                 </div>
                 <p>&copy; 2025 GoldenAge Network. All Rights Reserved.</p>
                 <p>Website developed by <a href="https://github.com/pvrzz">pvrz</a></p>
+                <p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> · <a href="accessibility.html">Accessibility Statement</a></p>
             </div>
         </footer>
     </div>
