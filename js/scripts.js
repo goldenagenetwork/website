@@ -59,43 +59,38 @@ console.log('If you see any vulnerable code or files in our website, please repo
 console.log('Developed with ❤️ by pvrz (https://github.com/pvrzz)');
 console.log('⚠️ WARNING: If someone asked you to insert code into the website, you may be getting scammed or misled. Do NOT insert any code here without proper knowledge of how the website or console works. ⚠️');
 
-// ensures that the Sienna accessibility widget is loaded properly
-(function ensureSiennaWidget() {
-    var SIENNA_SRC = 'https://website-widgets.pages.dev/dist/sienna.min.js';
-    var maxAttempts = 2; // initial + 1 retry
+(function ensureUserWayWidget() {
+    var SRC = 'https://cdn.userway.org/widget.js';
+    var ACCOUNT = 'Grhg0DGJZw';
+    var maxAttempts = 2;
     var attempts = 0;
 
-    function hasSiennaScript() {
+    function hasScript() {
         try {
-            var sel = 'script[src="' + SIENNA_SRC.replace(/[-/\\.^$*+?()[\]{}|]/g, '\\$&') + '"]';
+            var sel = 'script[src="' + SRC.replace(/[-/\\.^$*+?()[\]{}|]/g, '\\$&') + '"]';
             return !!document.querySelector(sel);
         } catch (e) { return false; }
     }
 
-    function injectSienna(force) {
-        if (!force && hasSiennaScript()) return;
+    function inject(force) {
+        if (!force && hasScript()) return;
         var s = document.createElement('script');
-        s.src = SIENNA_SRC + (force ? ('?cb=' + Date.now()) : '');
-        s.defer = true;
+        s.src = SRC + (force ? ('?cb=' + Date.now()) : '');
+        s.setAttribute('data-account', ACCOUNT);
         s.crossOrigin = 'anonymous';
-        if (force) s.dataset.retry = '1';
-        s.onload = function () {
-            window.__siennaLoaded = true;
-        };
+        s.onload = function () { window.__userwayLoaded = true; };
         s.onerror = function () {
             attempts += 1;
             if (attempts < maxAttempts) {
-                setTimeout(function(){ injectSienna(true); }, 1500);
+                setTimeout(function(){ inject(true); }, 1500);
             }
         };
         (document.body || document.documentElement).appendChild(s);
     }
 
     function maybeLoad() {
-        if (window.__siennaLoaded || window.Sienna) return;
-        if (!hasSiennaScript()) {
-            injectSienna(false);
-        }
+        if (window.__userwayLoaded) return;
+        if (!hasScript()) { inject(false); }
     }
 
     if (document.readyState === 'loading') {
@@ -106,9 +101,7 @@ console.log('⚠️ WARNING: If someone asked you to insert code into the websit
 
     window.addEventListener('load', function () {
         setTimeout(function () {
-            if (!window.__siennaLoaded && !window.Sienna) {
-                injectSienna(true);
-            }
+            if (!window.__userwayLoaded) { inject(true); }
         }, 1000);
     });
 })();
