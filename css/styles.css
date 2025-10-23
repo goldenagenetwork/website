@@ -61,7 +61,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* accessibility: skip link and focus-visible styles */
+/* accessibility */
 .skip-link {
     position: absolute;
     left: -9999px;
@@ -149,7 +149,7 @@ h1, h2, h3 {
     transition: background 0.3s ease-in-out;
 }
 
-/* When an announcement bar is present directly before the navbar, 
+/* When an announcement bar is visible before the navbar, 
 offset the navbar */
 .announcement-bar + .navbar {
     top: var(--announcement-height);
@@ -626,7 +626,7 @@ section.visible {
     margin-bottom: 1.5rem;
 }
 
-/* pages w/o without an announcement bar: remove top offset to avoid gaps */
+/* pages w/o without an announcement bar */
 body.no-announcement .navbar {
     top: 0;
 }
@@ -636,4 +636,46 @@ body.no-announcement .main-header {
 }
 body.no-announcement .navbar-collapse.active {
     padding-top: 0;
+}
+
+/* 404 page styles */
+body.page-404 .main-header {
+    height: auto;
+    min-height: 60vh;
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
+
+body.page-404 .content-overlay .main-logo {
+    width: clamp(120px, 16vw, 200px);
+    max-width: none;
+    margin-bottom: 1rem;
+}
+
+body.page-404 .content-overlay h1 {
+    font-size: clamp(1.5rem, 2.6vw + 1rem, 2.75rem);
+    margin: 0.25rem 0 0.5rem;
+}
+
+body.page-404 .content-overlay p {
+    font-size: clamp(1rem, 1.2vw + 0.8rem, 1.25rem);
+    margin: 0.5rem 0 1rem;
+}
+
+body.page-404 .btn {
+    padding: clamp(0.55rem, 1vw, 0.9rem) clamp(1rem, 2vw, 1.6rem);
+    font-size: clamp(0.95rem, 1vw, 1.05rem);
+}
+
+@media (max-width: 768px) {
+    body.page-404 .main-header {
+        padding-top: 70px; 
+        min-height: 70vh;
+    }
+    body.page-404 .content-overlay h1 {
+        font-size: clamp(1.25rem, 4.5vw + 0.5rem, 2rem);
+    }
+    body.page-404 .content-overlay p {
+        font-size: 1rem;
+    }
 }
