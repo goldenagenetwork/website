@@ -21,15 +21,15 @@
     align-items: center;
     justify-content: center;
     z-index: 1100;
-    background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
-    color: #111;
+    background: linear-gradient(90deg, #8B0000, #ff4c4c); /* Red background */
+    color: #fff;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     box-sizing: border-box;
 }
 .announcement-bar a {
-    color: #111;
+    color: #fff;
     text-decoration: underline;
     display: flex;
     align-items: center;
