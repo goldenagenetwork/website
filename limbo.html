@@ -87,6 +87,12 @@
 			.audio-toggle-btn i {
 				pointer-events: none;
 			}
+			.content-overlay {
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
 		</style>
 </head>
 <body class="no-announcement page-404">
@@ -103,8 +109,9 @@
 
 	<main id="main-content">
 		<header class="main-header">
-			<div class="content-overlay" style="padding: 0 20px;">
-				<img src="media/goldenagelogozoomedin.png" alt="GoldenAge Network Logo" class="main-logo" />
+			<div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+			<div class="content-overlay" style="padding: 0 20px; z-index: 1; position: relative;">
+				<img src="media/goldenagelogozoomedin.png" alt="GoldenAge Network Logo" class="main-logo" draggable="false" />
 				<h1>Currently on Hiatus</h1>
 				<div style="max-width: 800px; margin: 0 auto;">
 					<p style="font-size: 1.4rem; margin-bottom: 1rem;">Development of the Goldenage Network project is paused for the time being.</p>
@@ -131,6 +138,7 @@
 
 	<!-- Accessibility widget only -->
 	<script src="https://cdn.userway.org/widget.js" data-account="Grhg0DGJZw"></script>
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	
 	<script>
 		const bgm = document.getElementById('bgm');
@@ -183,6 +191,32 @@
 					console.error("Audio playback prevented:", err);
 				});
 			}
+		});
+
+		// Initialize particles.js
+		particlesJS('particles-js', {
+			"particles": {
+				"number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+				"color": { "value": "#ffd700" },
+				"shape": { "type": "circle" },
+				"opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+				"size": { "value": 4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5, "sync": false } },
+				"line_linked": { "enable": true, "distance": 150, "color": "#ffd700", "opacity": 0.3, "width": 1 },
+				"move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+			},
+			"interactivity": {
+				"detect_on": "window",
+				"events": {
+					"onhover": { "enable": true, "mode": "grab" },
+					"onclick": { "enable": true, "mode": "push" },
+					"resize": true
+				},
+				"modes": {
+					"grab": { "distance": 200, "line_linked": { "opacity": 0.6 } },
+					"push": { "particles_nb": 4 }
+				}
+			},
+			"retina_detect": true
 		});
 	</script>
 </body>
