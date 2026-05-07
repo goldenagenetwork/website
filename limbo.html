@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Limbo | GoldenAge Network</title>
+		<meta name="description" content="Project Hiatus Notice">
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="theme-color" content="#ffd166">
+		<!-- Open Graph  -->
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Limbo | GoldenAge Network">
+		<meta property="og:description" content="Project Hiatus Notice">
+		<meta property="og:image" content="https://gasmp.net/media/gawebsitepreview.png">
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Limbo | GoldenAge Network">
+		<meta name="twitter:description" content="Project Hiatus Notice">
+		<meta name="twitter:image" content="https://gasmp.net/media/gawebsitepreview.png">
+		<!-- Preconnect -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<!-- Styles & Icons -->
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="icon" href="media/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<style>
+			#splash {
+				position: fixed;
+				inset: 0;
+				z-index: 2000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: rgba(18, 18, 18, 0.95);
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				cursor: pointer;
+				transition: opacity 0.8s ease;
+				color: #e0e0e0;
+			}
+			#splash.hidden {
+				opacity: 0;
+				pointer-events: none;
+			}
+			.splash-content {
+				text-align: center;
+				animation: pulse 2s infinite ease-in-out;
+			}
+			.splash-content h2 {
+				font-size: 2rem;
+				margin-bottom: 0.5rem;
+				color: #ffd700;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+			}
+			.splash-content p {
+				font-size: 1.1rem;
+				opacity: 0.8;
+			}
+			@keyframes pulse {
+				0%, 100% { transform: scale(1); }
+				50% { transform: scale(1.05); }
+			}
+			.audio-toggle-btn {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
+				color: #111;
+				border: none;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.2rem;
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				z-index: 1000;
+			}
+			.audio-toggle-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 5px 15px rgba(252, 163, 17, 0.4);
+			}
+			.audio-toggle-btn i {
+				pointer-events: none;
+			}
+		</style>
+</head>
+<body class="no-announcement page-404">
+	<!-- Splash screen -->
+	<div id="splash" role="button" tabindex="0" aria-label="Click to enter">
+		<div class="splash-content">
+			<h2>Click anywhere to enter</h2>
+			<p>Music will play</p>
+		</div>
+	</div>
+
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+
+	<main id="main-content">
+		<header class="main-header">
+			<div class="content-overlay" style="padding: 0 20px;">
+				<img src="media/goldenagelogozoomedin.png" alt="GoldenAge Network Logo" class="main-logo" />
+				<h1>Currently on Hiatus</h1>
+				<div style="max-width: 800px; margin: 0 auto;">
+					<p style="font-size: 1.4rem; margin-bottom: 1rem;">Development of the Goldenage Network project is paused for the time being.</p>
+					<p>We're still awaiting a very delayed response from <strong>radi8or (aka giligens)</strong> before progress can resume. As soon as we hear back, we can work on the project and updates will be shared with the community.</p>
+					<p style="font-style: italic; opacity: 0.9; margin-top: 1.5rem;">Thank you for your continued patience and support, and we hope to have an answer eventually.</p>
+				</div>
+				<div style="margin-top:2.5rem; display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
+					<a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Go to Homepage</a>
+					<a href="https://discord.gg/dWfYswyBdc" target="_blank" class="btn btn-primary"><i class="fab fa-discord"></i> Join our Discord</a>
+				</div>
+			</div>
+		</header>
+	</main>
+
+	<!-- Background music -->
+	<audio id="bgm" loop preload="auto">
+		<source src="media/frutbgm.mp3" type="audio/mpeg">
+	</audio>
+
+	<!-- Audio toggle -->
+	<button id="limbo-audio-toggle" class="audio-toggle-btn" aria-label="Toggle background music" type="button">
+		<i class="fas fa-volume-mute"></i>
+	</button>
+
+	<!-- Accessibility widget only -->
+	<script src="https://cdn.userway.org/widget.js" data-account="Grhg0DGJZw"></script>
+	
+	<script>
+		const bgm = document.getElementById('bgm');
+		const audioToggle = document.getElementById('limbo-audio-toggle');
+		const icon = audioToggle.querySelector('i');
+		const splash = document.getElementById('splash');
+		
+		let isPlaying = false;
+		bgm.volume = 0.55;
+
+		let hasEntered = false;
+		function enterSite() {
+			if (hasEntered) return;
+			hasEntered = true;
+			
+			bgm.play().then(() => {
+				icon.classList.remove('fa-volume-mute');
+				icon.classList.add('fa-volume-up');
+				isPlaying = true;
+			}).catch(err => {
+				console.error("Audio playback prevented:", err);
+			});
+			
+			splash.classList.add('hidden');
+			setTimeout(() => {
+				splash.style.display = 'none';
+			}, 800);
+		}
+
+		splash.addEventListener('click', enterSite);
+		splash.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				enterSite();
+			}
+		});
+
+		audioToggle.addEventListener('click', () => {
+			if (isPlaying) {
+				bgm.pause();
+				icon.classList.remove('fa-volume-up');
+				icon.classList.add('fa-volume-mute');
+				isPlaying = false;
+			} else {
+				bgm.play().then(() => {
+					icon.classList.remove('fa-volume-mute');
+					icon.classList.add('fa-volume-up');
+					isPlaying = true;
+				}).catch(err => {
+					console.error("Audio playback prevented:", err);
+				});
+			}
+		});
+	</script>
+</body>
+</html>
